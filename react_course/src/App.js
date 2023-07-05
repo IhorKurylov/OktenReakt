@@ -1,28 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-import UserComponent from './components/UserComponent/UserComponent.jsx';
 
-const firstDiv = <div>HEllo world</div>
+import { UserContainer } from './components/UserContainer/UserContainer.js';
+import { useState } from 'react';
 
 const App = () => {
-  console.log('console');
+
+  console.log('App render');
+  // setTimeout(() => setShow(false), 5000);
+
   return (
     <>
-      <div>
-        HEllo world
-      </div>
-      <UserComponent
-        name={'Ihor'}
-        nickname={'dev'}
-        email={'dcsd@sdvsd'}
-        element={firstDiv}
-      />
-      <UserComponent
-        name={'ne Ihor'}
-        nickname={'ne dev'}
-        email={'nema'}
-        element={firstDiv}
-      />
+      {/*<p>{show ? "Show" : "Hidden"}</p>*/}
+      <UserContainer/>
+
+
     </>
   );
 };
