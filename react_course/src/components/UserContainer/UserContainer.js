@@ -1,58 +1,28 @@
 import UserComponent from './UserComponent/UserComponent.jsx';
-import { useEffect, useState } from 'react';
-import { logDOM } from '@testing-library/react';
+import { useContext, createContext } from 'react';
+import { UsersContext } from '../../App.js';
+
+export const HAHAContext = createContext(null);
 
 export const UserContainer = () => {
-  const [ users, setUsers ] = useState(null);
-  const [ errors, setErrors ] = useState();
-  const [ smth, setSmth ] = useState('advcava');
 
-
-
-  useEffect(() => {
-
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((users) => {
-        setUsers(users);
-        setSmth('Ihor');
-      })
-      .catch((errors) => console.log(errors.response))
-      .finally(() => {
-        console.log('Promise finished')
-      });
-
-  },[]);
-
-
-  const handleDelete = (id) => {
-    setUsers([ ...users ].filter((user) => user.id !== id));
-  };
-
-  const handleClick = (value) => {
-    alert(`User id is ${value}`);
-    // alert(`User id is`)
-  };
-
-  console.log('render');
+  const {users, smth} = useContext(UsersContext);
 
   return (
-    <>
-      {smth && <p>{smth}</p>}
-      <h1>Hello</h1>
-      {smth && <p>{smth}</p>}
-      {smth && <p>{smth}</p>}
+    <HAHAContext.Provider value={'haha'}>
+      <div>
+        <h1>Hello</h1>
+        {smth && <p>{smth}</p>}
 
-      {users?.map((user, id) => {
-        user.phone = '+' + user.phone;
-        return (
-          <UserComponent
-            key={id}
-            user={user}
-            handleClick={handleClick}
-            handleDelete={handleDelete}
-          />);
-      })}
-    </>);
+        {users?.map((user, id) => {
+          user.phone = '+' + user.phone;
+          return (
+            <UserComponent
+              key={id}
+              user={user}
+            />);
+        })}
+      </div>
+    </HAHAContext.Provider>);
 };
 
