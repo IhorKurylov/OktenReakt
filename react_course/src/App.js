@@ -3,6 +3,7 @@ import './App.css';
 
 import { UserContainer } from './components/UserContainer/UserContainer.js';
 import { createContext, useEffect, useState } from 'react';
+import LoginPage from './pages/LoginPage/LoginPage.js';
 
 
 export const UsersContext = createContext(null);
@@ -12,18 +13,18 @@ const App = () => {
   const [ users, setUsers ] = useState(null);
   const [ smth, setSmth ] = useState('advcava');
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((users) => {
-        setUsers(users);
-        setSmth('Ihor');
-      })
-      .catch((errors) => console.log(errors.response))
-      .finally(() => {
-        console.log('Promise finished');
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/users')
+  //     .then((res) => res.json())
+  //     .then((users) => {
+  //       setUsers(users);
+  //       setSmth('Ihor');
+  //     })
+  //     .catch((errors) => console.log(errors.response))
+  //     .finally(() => {
+  //       console.log('Promise finished');
+  //     });
+  // }, []);
 
 
   const handleDelete = (id) => {
@@ -40,10 +41,9 @@ const App = () => {
 
   return (
     <UsersContext.Provider value={contextValue}>
-      <div style={{display: 'flex'}}>
-        <UserContainer/>
-        <UserContainer/>
-      </div>
+        {/*<UserContainer/>*/}
+        {/*<UserContainer/>*/}
+        <LoginPage />
     </UsersContext.Provider>
   );
 };
