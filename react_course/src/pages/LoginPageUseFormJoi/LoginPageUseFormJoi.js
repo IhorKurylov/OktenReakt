@@ -3,6 +3,7 @@ import Joi from "joi";
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useForm } from "react-hook-form";
 import { apiService } from '../../services/apiService.js';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -19,29 +20,17 @@ const LoginPageUseFormJoi = () => {
   const { register, handleSubmit, formState: { errors, isValid }} = useForm({
     resolver: joiResolver(schema),
   });
+const navigate = useNavigate()
+  const path = useLocation();
+
+  console.log(path);
 
   const onSubmit = (data) => {
     console.log(data);
     // handleLogin()
-    apiService.handleLoginAxios(data)
+    apiService.handleLoginAxios(data, navigate)
   }
 
-  // const handleLogin = async () => {
-  //   try{
-  //     const data = await fetch('http://localhost:8000/api/login', {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         email: '',
-  //         password:''
-  //       })
-  //     })
-  //     const response = await data.json()
-  //     console.log(response);
-  //   } catch (e) {
-  //
-  //   }
-  // }
-  console.log(errors);
 
   return(
     <div className={styles.wrapper}>
