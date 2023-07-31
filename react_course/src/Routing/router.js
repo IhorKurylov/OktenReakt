@@ -4,6 +4,7 @@ import LoginPageUseFormJoi from '../pages/LoginPageUseFormJoi/LoginPageUseFormJo
 import { useOutletContext } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes.js';
 import { PrivateRoute, PublicRoute } from '../HOC/RoutesManagment.js';
+import Lesson7 from '../components/lesson7Components/Lesson7.js';
 
 const AppLayout =()=>(
   <div  style={{height: '100vh', overflow: 'hidden'}}>
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: AppRoutes.MAIN,
         element: <div>Hello world!</div>,
+      },
+      {
+        path: AppRoutes.LESSON7,
+        element: <Lesson7/>,
       },
       {
         path: AppRoutes.LOGIN,

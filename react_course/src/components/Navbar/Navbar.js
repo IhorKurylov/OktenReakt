@@ -18,6 +18,10 @@ const links = [
   {
     path: AppRoutes.MAIN,
     label: 'Main'
+  },
+  {
+    path: AppRoutes.LESSON7,
+    label: 'Lesson7'
   }
 ]
   const {pathname} = useLocation();
@@ -31,8 +35,7 @@ const links = [
       height: 40
     }}>
       {links.map((link) => (
-        <Link style={{backgroundColor: link.path === pathname ? 'red' : 'blue'}}
-              to={link.path}>{link.label}</Link>
+        <Link to={link.path}>{link.label}</Link>
       ))}
     </div>
   );
