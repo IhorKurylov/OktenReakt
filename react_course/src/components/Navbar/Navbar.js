@@ -22,6 +22,14 @@ const links = [
   {
     path: AppRoutes.LESSON7,
     label: 'Lesson7'
+  },
+  {
+    path: AppRoutes.LESSON8,
+    label: 'Lesson8'
+  },
+  {
+    path: AppRoutes.Lesson8Nested,
+    label: 'Lesson8Nested'
   }
 ]
   const {pathname} = useLocation();

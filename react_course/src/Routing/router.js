@@ -5,6 +5,10 @@ import { useOutletContext } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes.js';
 import { PrivateRoute, PublicRoute } from '../HOC/RoutesManagment.js';
 import Lesson7 from '../components/lesson7Components/Lesson7.js';
+import Lesson8 from '../components/lesson8Components/Lesso8.js';
+import Lesson8Nested from '../components/lesson8Components/Lesso8Nested.js';
+import { useEffect, useState } from 'react';
+import { useGEtCharacter } from '../hook/useGEtCharacters.js';
 
 const AppLayout =()=>(
   <div  style={{height: '100vh', overflow: 'hidden'}}>
@@ -20,12 +24,20 @@ const AppLayout =()=>(
 const Users = ()=>{
   const info = 'info'
   const navigate = useNavigate();
-  // setTimeout(()=>{
-  //   navigate(AppRoutes.LOGIN)
-  // },3000)
+
+  const [users, setUsers] = useState([])
+
+  useGEtCharacter(setUsers)
   return(
     <div >
-      <h1>Users</h1>
+      {users.map((user) => (
+        <div>
+          <p>{user.name}</p>
+          <p>{user.status}</p>
+          <img src={user.image} alt="" style={{width: 100, height: 100}}/>
+        </div>
+      ))}
+
       <Outlet context={info} />
     </div>
   )
@@ -65,6 +77,16 @@ export const router = createBrowserRouter([
       {
         path: AppRoutes.MAIN,
         element: <div>Hello world!</div>,
+      },
+      {
+        path: AppRoutes.LESSON8,
+        element: <Lesson8/>,
+        children:[
+          {
+            path: AppRoutes.Lesson8Nested,
+            element:  <Lesson8Nested />,
+          },
+        ]
       },
       {
         path: AppRoutes.LESSON7,
