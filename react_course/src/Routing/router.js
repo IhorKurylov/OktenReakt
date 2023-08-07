@@ -9,9 +9,11 @@ import Lesson8 from '../components/lesson8Components/Lesso8.js';
 import Lesson8Nested from '../components/lesson8Components/Lesso8Nested.js';
 import { useEffect, useState } from 'react';
 import { useGEtCharacter } from '../hook/useGEtCharacters.js';
+import Lesson9 from '../components/lesson9/Lesso9.js';
+
 
 const AppLayout =()=>(
-  <div  style={{height: '100vh', overflow: 'hidden'}}>
+  <div  style={{height: '100vh'}}>
     <Navbar />
     <div style={{width: "100%", display: 'flex'}}>
       <div style={{width: "20%", backgroundColor: 'aqua', height: '100vh' }}>Aside</div>
@@ -91,6 +93,10 @@ export const router = createBrowserRouter([
       {
         path: AppRoutes.LESSON7,
         element: <Lesson7/>,
+      },
+      {
+        path: AppRoutes.LESSON9,
+        element: <Lesson9/>,
       },
       {
         path: AppRoutes.LOGIN,

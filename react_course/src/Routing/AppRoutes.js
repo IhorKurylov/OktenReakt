@@ -6,5 +6,6 @@ export const AppRoutes = {
   USERID: "/users/:userId",
   LESSON7: '/lesson7',
   LESSON8: '/lesson8',
+  LESSON9: '/lesson9',
   Lesson8Nested: '/lesson8/customhook'
 }
