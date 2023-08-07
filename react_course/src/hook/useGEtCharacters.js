@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
 
-export function useGEtCharacter(setUsers, number=0){
+export function useGEtCharacter(setUsers, number=0,  url){
   const [value, setValue] = useState(0)
+
 
   useEffect(()=>{
     fetch('https://rickandmortyapi.com/api/character')
@@ -20,3 +21,7 @@ export function useGEtCharacter(setUsers, number=0){
 }
 
 
+export function useToggle(value){
+
+  return !value
+}

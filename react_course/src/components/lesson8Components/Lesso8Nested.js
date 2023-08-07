@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useGEtCharacter } from '../../hook/useGEtCharacters.js';
+import { useGEtCharacter, useToggle } from '../../hook/useGEtCharacters.js';
 
 const Lesson8Nested = () => {
 
@@ -10,6 +10,7 @@ const Lesson8Nested = () => {
   //     .then(resp => resp.json())
   //     .then(data => setUsers(data.results))
   // },[])
+  const toggle = useToggle(true)
 
   console.log(sum);
   return (
