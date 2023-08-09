@@ -35,8 +35,9 @@ const usersReducer = (state = initialState, action) => {
     case UserActionTypes.SET_USERS:
      return {
        ...state,
-       results: action.payload.results,
-       info: action.payload.info,
+       ...action.usersData,
+       // results: action.payload.results,
+       // info: action.payload.info,
        count: state.count + 1,
        isLoading: false
      }

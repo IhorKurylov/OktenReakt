@@ -1,43 +1,35 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGEtCharacter, useToggle } from '../../hook/useGEtCharacters.js';
-import { userActions } from '../../reduxCore/actions/userActions.js';
+import { getMoreData, userActions } from '../../reduxCore/actions/userActions.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserActionTypes } from '../../reduxCore/reducers/usersReducer.js';
 import store from '../../reduxCore/store.js';
+import { useGetRIckMorty } from '../../hook/useGetRickMorty.js';
+import { tokenInstance } from '../../services/rmApiServices.js';
+import { Endpoints } from '../../api/endpoints.js';
 
 const Lesson9 = () => {
   const dispatch = useDispatch();
   const users = useSelector((store) => store.users.results);
   const isLoading = useSelector((store) => store.users.isLoading);
-  const info = useSelector((store) => store.users.info.next);
+  const nextUrl = useSelector((store) => store.users.info.next);
+  const getMore = (number) => dispatch(getMoreData(number))
 
-  console.log('users', users);
 
-  useEffect(() => {
-    dispatch(userActions.setIsLoading(true));
+  useGetRIckMorty()
 
-    fetch('https://rickandmortyapi.com/api/character')
-      .then(resp => resp.json())
-      .then(data => dispatch(userActions.setUsers(data)))
-    // .catch(e => d)
-    // .then(data => dispatch({type: UserActionTypes.SET_USERS, payload:data}))
-  }, []);
-
-  const getMore = () => {
-    dispatch(userActions.setIsLoading(true));
-    fetch(info)
-      .then(resp => resp.json())
-      .then(data => dispatch(userActions.addUsers(data)))
+  const handleNext = () => {
+    const pageNum = nextUrl.split('=')[1]
+    getMore(pageNum)
   }
-
 
   return (
     <div>
       {isLoading
         ? <h1>Loading ....</h1>
         : <>
-          <p>{info}</p>
-          <p onClick={getMore}>Get next</p>
+          <p>{nextUrl}</p>
+          <p onClick={handleNext}>Get next</p>
           {users.map((user) => (
             <div>
               <p>{user.name}</p>
