@@ -8,6 +8,10 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.5.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "axios": "^1.4.0",
     "joi": "^17.9.2",
     "localforage": "^1.10.0",
@@ -22,6 +26,7 @@
     "redux-thunk": "^2.4.2",
     "sass": "^1.63.6",
     "sort-by": "^1.2.0",
+    "typescript": "^5.1.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

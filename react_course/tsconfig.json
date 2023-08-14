@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "declaration": true, // Generate corresponding .d.ts file
+    "incremental": true, // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
+//    "typeRoots": [
+//      "node_modules/@types",
+//      "src/types"
+//    ]
+  },
+  "paths": {
+    "*.wav": ["types/wav-file"]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": ["node_modules", "build"]
+}

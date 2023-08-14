@@ -5,11 +5,13 @@ import { useOutletContext } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes.js';
 import { PrivateRoute, PublicRoute } from '../HOC/RoutesManagment.js';
 import Lesson7 from '../components/lesson7Components/Lesson7.js';
-import Lesson8 from '../components/lesson8Components/Lesso8.js';
+import Lesson8 from '../components/lesson8Components/Lesso8.tsx';
 import Lesson8Nested from '../components/lesson8Components/Lesso8Nested.js';
 import { useEffect, useState } from 'react';
 import { useGEtCharacter } from '../hook/useGEtCharacters.js';
 import Lesson9 from '../components/lesson9/Lesso9.js';
+import UsersTS from '../components/lesson11/UsersTS.tsx';
+
 
 
 const AppLayout =()=>(
@@ -101,6 +103,10 @@ export const router = createBrowserRouter([
       {
         path: AppRoutes.LOGIN,
         element: <PrivateRoute Component={LoginPageUseFormJoi} />,
+      },
+      {
+        path: "/lesson11",
+        element: <UsersTS />,
       },
       {
         path: AppRoutes.USERS,

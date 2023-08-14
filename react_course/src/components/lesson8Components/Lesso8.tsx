@@ -1,12 +1,55 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import Todos from './Todos.js';
+
 import { Outlet } from "react-router-dom";
+import Todos from "./Todos";
+
+type User = {
+  name: string;
+  id: string;
+  role?: string;
+}
+
+export const user = {
+  nickname: "qweqwr"
+}
+
+
+type DType = "1" | "2" | "3"
+
+enum Medias {
+  yt= 'Youtube',
+  fb = "Facebook",
+  wu = "whatsup",
+  twitter = 5,
+  smth
+}
 
 const Lesson8 = () => {
-  const [ count, setCount ] = useState(0);
-  const [ todos, setTodos ] = useState([1,2,3]);
+  const [ count, setCount ] = useState<number>(0);
+  const [ todos, setTodos ] = useState<string[]>(["1","2","3"]);
 
-  const expensiveCalculation = (number) => {
+  const user: User = {
+    name: "Ihor",
+    id: 'string'
+  }
+
+  const usersArray: User[] = [user, { name: "Ihor",
+    id: 'string', role: '123'}]
+
+
+  const getSum:(neA: string, neB: string) => string = (a, b) => {
+    return a+b
+  }
+
+
+  const d: DType = '2'
+
+
+
+  console.log(Medias.fb)
+
+
+  const expensiveCalculation = (number: number) => {
     console.log('Calculating .....');
     for(let i=0; i < 1000000000; i++){
       number += 1;
@@ -16,7 +59,7 @@ const Lesson8 = () => {
 
   const calculation = useMemo(()=>expensiveCalculation(count),[count])
 
-  const changeCount = (type) => {
+  const changeCount = (type: string) => {
     setCount(type==='decrement' ? count - 1 : count + 1)
   };
 
